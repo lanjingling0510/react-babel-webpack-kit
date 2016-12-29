@@ -1,13 +1,13 @@
 import React from 'react';
-import classPrefix from '../../decorator/classPrefix.js';
-import './Header.css';
-import '../../style/elastic-in-down.css';
+// import classPrefix from '../../decorator/classPrefix.js';
+// import './Header.css';
+// import '../../style/elastic-in-down.css';
 
-@classPrefix('Header')
+// @classPrefix('Header')
 class Header extends React.Component {
   render() {
     return (
-      <div className={this.ns()}>
+      <div>
         <div className="Header-box ani elastic-in-down">
           Header
         </div>
