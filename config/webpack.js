@@ -65,6 +65,11 @@ const plugins = [
           query: babelrc,
       }]
   }),
+
+  happyPackPlugin({
+      name: 'happypack-css',
+      loaders: ['style', 'css?&importLoaders=1', 'postcss'],
+  }),
 ];
 
 
@@ -127,7 +132,7 @@ module.exports = {
         loader: 'eslint'
       }, {
         test: /\.css$/,
-        loaders: ['style', 'css?&importLoaders=1', 'postcss']
+        loaders: 'happypack/loader?id=happypack-css',
       },
     ]
   },
