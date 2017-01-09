@@ -1,9 +1,9 @@
 import React from 'react';
-// import classPrefix from '../../decorator/classPrefix.js';
-// import './Header.css';
-// import '../../style/elastic-in-down.css';
+import refsHOC from '../../decorator/refsHOC.js';
+import './Header.css';
+import '../../style/elastic-in-down.css';
 
-// @classPrefix('Header')
+@refsHOC
 class Header extends React.Component {
   render() {
     return (
