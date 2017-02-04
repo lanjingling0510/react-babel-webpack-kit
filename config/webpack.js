@@ -67,7 +67,12 @@ const plugins = [
   }),
 
   happyPackPlugin({
-      name: 'happypack-css',
+      name: 'happypack-component-css',
+      loaders: ['style', 'css?modules&localIdentName=[name]__[local]', 'postcss'],
+  }),
+
+  happyPackPlugin({
+      name: 'happypack-glocal-css',
       loaders: ['style', 'css?&importLoaders=1', 'postcss'],
   }),
 ];
@@ -132,7 +137,12 @@ module.exports = {
         loader: 'eslint'
       }, {
         test: /\.css$/,
-        loaders: 'happypack/loader?id=happypack-css',
+        include: path.resolve(ROOT_PATH, 'src', 'component'),
+        loaders: 'happypack/loader?id=happypack-component-css',
+      }, {
+        test: /\.css$/,
+        include: path.resolve(ROOT_PATH, 'src', 'style'),
+        loaders: 'happypack/loader?id=happypack-glocal-css',
       },
     ]
   },

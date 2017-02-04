@@ -1,14 +1,24 @@
 import React from 'react';
-import refsHOC from '../../decorator/refsHOC.js';
-import './Header.css';
+import styles from './Header.css';
 import '../../style/elastic-in-down.css';
+import renderLog from '../../decorator/renderLog.js';
+import Navbar from '../Navbar/Navbar.jsx';
+import pureRender from '../../decorator/pureRender.js';
 
-@refsHOC
+@pureRender
+@renderLog
 class Header extends React.Component {
+
   render() {
     return (
-      <div>
-        <div className="Header-box ani elastic-in-down">
+      <div className={styles.root}>
+        <Navbar>
+          <li>Home</li>
+          <li>Profile</li>
+          <li>Contact</li>
+        </Navbar>
+        <div
+          className={`${styles.box} ani elastic-in-down`}>
           Header
         </div>
       </div>

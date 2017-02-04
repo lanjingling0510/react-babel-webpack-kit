@@ -1,12 +1,12 @@
 @import "../../style/variables.css";
 
-.Header {
+.root {
     @mixin align flex;
     height: 100vh;
     width: 100vw;
 }
 
-.Header-box {
+.box {
     width: 100px;
     height: 100px;
     background: red;
