@@ -94,6 +94,7 @@ function setupCompiler(host, port, protocol) {
 
 function runDevServer(host, port, protocol) {
   var devServer = new WebpackDevServer(compiler, {
+    historyApiFallback: true,
     // Enable gzip compression of generated files.
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.
