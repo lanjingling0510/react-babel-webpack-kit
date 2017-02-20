@@ -1,4 +1,4 @@
 node_modules
-dist
+build
 webpack_cache
 .happypack

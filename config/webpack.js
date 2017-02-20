@@ -75,6 +75,12 @@ const plugins = [
       name: 'happypack-glocal-css',
       loaders: ['style', 'css?&importLoaders=1', 'postcss'],
   }),
+
+  new webpack.optimize.CommonsChunkPlugin({
+    name: ['vendor', 'manifest'], // vendor libs + extracted manifest
+    minChunks: Infinity,
+  }),
+  new webpack.NamedModulesPlugin(),
 ];
 
 
@@ -88,17 +94,18 @@ module.exports = {
   // TODO: Change when these issues are resolved.
   devtool: 'inline-source-map',
 
-  entry: [
-    // Include an alternative client for WebpackDevServer. A client's job is to
-    // connect to WebpackDevServer by a socket and get notified about changes.
-    // require.resolve('webpack-dev-server/client') + '?/',
-    // require.resolve('webpack/hot/dev-server'),
-    // We ship a few polyfills by default:
-    require.resolve('react-dev-utils/webpackHotDevClient'),
-    require.resolve('./polyfills.js'),
-    // Finally, this is your app's code:
-    './index',
-  ],
+  entry: {
+    vendor: require.resolve('./polyfills.js'),
+    main: [
+      // Include an alternative client for WebpackDevServer. A client's job is to
+      // connect to WebpackDevServer by a socket and get notified about changes.
+      // require.resolve('webpack-dev-server/client') + '?/',
+      // require.resolve('webpack/hot/dev-server'),
+      // We ship a few polyfills by default:
+      require.resolve('react-dev-utils/webpackHotDevClient'),
+      './index.js',
+    ],
+  },
 
   output: {
     path: ROOT_PATH + '/dist',
@@ -143,7 +150,16 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve(ROOT_PATH, 'src', 'style'),
         loaders: 'happypack/loader?id=happypack-glocal-css',
-      },
+      }, {
+          test: /\.(png|jpg|jpeg|gif|webp)$/i,
+          loader: 'url?limit=10000'
+      }, {
+          test: /\.(ttf|eot|svg|otf)(\?v=\d(\.\d){2})?$/,
+          loader: 'file'
+      }, {
+          test: /\.woff(2)?(\?v=\d(\.\d){2})?$/,
+          loader: 'url?limit=10000&minetype=application/font-woff'
+      }
     ]
   },
 
