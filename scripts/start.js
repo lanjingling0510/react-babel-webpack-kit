@@ -14,7 +14,7 @@ var clearConsole = require('react-dev-utils/clearConsole');
 var formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 var openBrowser = require('react-dev-utils/openBrowser');
 var config = require('../config/webpack.js');
-
+var {applyMock} = require('./mock.js');
 
 var DEFAULT_PORT = process.env.PORT || 8080;
 
@@ -134,6 +134,9 @@ function runDevServer(host, port, protocol) {
 
     openBrowser(protocol + '://' + host + ':' + port + '/');
   });
+
+  // 添加代理
+  applyMock(devServer);
 }
 
 function run(port) {
