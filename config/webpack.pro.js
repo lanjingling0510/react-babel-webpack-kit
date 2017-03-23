@@ -39,7 +39,6 @@ const plugins = [
             postcss: function (webpack) {
                 return [
                     require('postcss-smart-import')({addDependencyTo: webpack}),
-                    require('postcss-url')(),
                     require('postcss-mixins')({mixins}),
                     require('postcss-cssnext')({
                         browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9']

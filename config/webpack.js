@@ -42,7 +42,6 @@ const plugins = [
           require('postcss-smart-import')({
             addDependencyTo: webpack
           }),
-          require('postcss-url')(),
           require('postcss-mixins')({mixins}),
           require('postcss-cssnext')({
             browsers: [
@@ -68,7 +67,7 @@ const plugins = [
 
   happyPackPlugin({
       name: 'happypack-component-css',
-      loaders: ['style', 'css?modules&localIdentName=[name]__[local]', 'postcss'],
+      loaders: ['style', 'css?modules&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss'],
   }),
 
   happyPackPlugin({
@@ -144,7 +143,10 @@ module.exports = {
         loader: 'eslint'
       }, {
         test: /\.css$/,
-        include: path.resolve(ROOT_PATH, 'src', 'component'),
+        include: [
+          /node_modules/,
+          path.resolve(ROOT_PATH, 'src', 'component'),
+        ],
         loaders: 'happypack/loader?id=happypack-component-css',
       }, {
         test: /\.css$/,

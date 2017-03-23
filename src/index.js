@@ -1,12 +1,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './component/Header/Header.jsx';
+import Root from './root.js';
 
-ReactDOM.render(
-  <Header
-    /*
-      多行注释
-     */
-    />,
-document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
