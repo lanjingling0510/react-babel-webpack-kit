@@ -20,8 +20,8 @@ const plugins = [
 
     //提取Loader定义到同一地方
     new webpack.LoaderOptionsPlugin({
-        minimize: false,
-        debug: true,
+        minimize: true,
+        debug: false,
         options: {
             context: '/',
 
